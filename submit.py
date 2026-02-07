@@ -8,16 +8,19 @@ SECRET = b"hello-there-from-b12"
 URL = "https://b12.io/apply/submission"
 
 payload = {
-    "action_run_link": "https://github.com/doubleb219/B12/actions/runs/YOUR_RUN_ID",
+    "action_run_link": "ACTION_RUN_LINK_PLACEHOLDER",
     "email": "domiga0219@gmail.com",
     "name": "Domingo Garcia",
-    "repository_link": "https://github.com/doubleb219/B12",
-    "resume_link": "https://www.linkedin.com/in/dogoga/",
+    "repository_link": "https://github.com/doubleb219/ci-apply",
+    "resume_link": "https://linkedin.com/in/dogoga",
     "timestamp": datetime.datetime.utcnow().isoformat(timespec="milliseconds") + "Z",
 }
 
-# Canonical JSON: sorted keys, no whitespace
-body = json.dumps(payload, separators=(",", ":"), sort_keys=True).encode("utf-8")
+body = json.dumps(
+    payload,
+    separators=(",", ":"),
+    sort_keys=True
+).encode("utf-8")
 
 signature = hmac.new(SECRET, body, hashlib.sha256).hexdigest()
 
@@ -32,5 +35,4 @@ req = urllib.request.Request(
 )
 
 with urllib.request.urlopen(req) as resp:
-    response_body = resp.read().decode("utf-8")
-    print(response_body)
+    print(resp.read().decode("utf-8"))
