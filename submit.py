@@ -8,7 +8,7 @@ SECRET = b"hello-there-from-b12"
 URL = "https://b12.io/apply/submission"
 
 payload = {
-    "action_run_link": "ACTION_RUN_LINK_PLACEHOLDER",
+    "action_run_link": "https://github.com/doubleb219/ci-apply/actions/runs/21773081713",
     "email": "domiga0219@gmail.com",
     "name": "Domingo Garcia",
     "repository_link": "https://github.com/doubleb219/ci-apply",
